@@ -2,32 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+  background-color: #e6e7eb;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* ESTILOS GENERALES PARA LOS COMPONENTES */
+button[type="button"]{
+  @apply bg-gray-300 text-gray-900 py-4 px-4 border border-t-gray-500 text-white
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+button[type="submit"]{
+  @apply bg-gray-100 py-2 px-4 border border-t-blue-500 text-gray-500
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+input[type="text"]{
+  @apply w-full block rounded-md;
+}
+
+.newstate{
+  @apply bg-gray-100 py-2 px-4 border border-t-blue-500 text-gray-500
+}
+
+.btn-settings{
+  @apply bg-gray-300 py-2 px-4 border border-t-blue-500 text-gray-500 rounded-md
 }
