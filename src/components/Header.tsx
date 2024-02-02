@@ -17,7 +17,7 @@ export default async function Header() {
         <header className="flex justify-between items-center w-full h-20 px-4 text-white bg-gradient-to-b from-gray-500 to-gray-200 text-gray-500 sticky nav">
             <div>
                 <Link href={"/"} className='flex gap-1 text-blue-500 font-bold' >
-                    KANBAN BOARD
+                    KANBAN HOME
                 </Link>
             </div>
             <ul className="hidden md:flex">

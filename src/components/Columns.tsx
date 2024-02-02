@@ -10,42 +10,44 @@ export default function Columns() {
 
     const columns = useStorage(root => root.columns.map(c => ({ ...c })), shallow);
 
-    const updateColumns = useMutation(({ storage }, columns:LiveObject<Column>[]) => {
+    const updateColumns = useMutation(({ storage }, columns: LiveObject<Column>[]) => {
         storage.set('columns', new LiveList(columns));
     }, []);
 
     function setColumnsOrder(sortedColumns: Column[]) {
-        const newColumns:LiveObject<Column>[] = [];
+        const newColumns: LiveObject<Column>[] = [];
         sortedColumns.forEach((sortedColumn, newIndex) => {
-            const newSortedColumn = {...sortedColumn};
+            const newSortedColumn = { ...sortedColumn };
             newSortedColumn.index = newIndex;
             newColumns.push(new LiveObject(newSortedColumn))
         });
         updateColumns(newColumns)
     }
 
-     // esto es para solucionar los warnings de ts
-     if (!columns) {
+    // esto es para solucionar los warnings de ts
+    if (!columns) {
         return;
     }
 
     return (
-        <div className='flex gap-4'>
-            <ReactSortable
-                group={'board-column'}
-                list={columns}
-                className='flex gap-4'
-                ghostClass="opacity-40"
-                setList={setColumnsOrder}>
-                {columns.map(column => (
-                    <BoardColumn
-                        key={column.id}
-                        {...column}
-                    />
-                ))}
-            </ReactSortable>
-
+        <div className='flex flex-wrap gap-4'>
+            <div className='relative overflow-x-auto'>
+                <ReactSortable
+                    group={'board-column'}
+                    list={columns}
+                    className='flex gap-4 '
+                    ghostClass="opacity-40"
+                    setList={setColumnsOrder}>
+                    {columns.map(column => (
+                        <BoardColumn
+                            key={column.id}
+                            {...column}
+                        />
+                    ))}
+                </ReactSortable>
+            </div>
             <NewColumnForm />
         </div>
+
     )
 }

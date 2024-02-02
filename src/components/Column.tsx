@@ -109,7 +109,7 @@ export default function Column({ id, name }: ColumnsProps) {
     }
 
     return (
-        <div className='w-48 bg-white shadow-md rounded-md p-2'>
+        <div className='w-48 h-auto bg-white shadow-md rounded-md p-2'>
             {!editNameMode && (
                 <div className="flex justify-between">
                     <h3>{name}</h3>
@@ -132,9 +132,9 @@ export default function Column({ id, name }: ColumnsProps) {
                     </form>
                     <button
                         onClick={() => deleteColumn(id)}
-                        className="bg-red-300 text-white p-2 flex gap-2 w-full items-center rounded-md justify-center">
+                        className="bg-gray-100 text-gray-500 p-2 flex gap-2 w-full items-center rounded-md justify-center border border-t-red-500">
                         <FontAwesomeIcon icon={faTrash} />
-                        Delete state
+                        Delete
                     </button>
 
                 </div>

@@ -6,11 +6,13 @@ import { ClientSideSuspense } from '@liveblocks/react';
 import Columns from './Columns';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
-import { FormEvent, useState } from 'react';
+import { faArrowLeft, faCog, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+import { FormEvent, useContext, useState } from 'react';
 import { updateBoard } from '@/app/actions/boardActions';
 import { useRouter } from 'next/navigation';
 import CancelButton from './buttons/CancelButton';
+import { BoardContextProvider } from './boardComponents/BoardContext';
+
 
 // ANtes de usa liveblocks habia creado defults columns y cards para ver si funcionaba y tambien defini las clases TYPE
 
@@ -61,59 +63,65 @@ export default function Board({ id, name }: { id: string, name: string }) {
     if (input) {
       const newName = input.value;
       // llamamos a la opcion updateboard de boardAction 
-      await updateBoard(id, {metadata: {boardName: newName}});
+      await updateBoard(id, { metadata: { boardName: newName } });
       setEditNameMode(false);
       router.refresh();
     }
   }
 
   return (
-    // es un componente de liveblocks, que sirve para traer los datos de la db
-    <RoomProvider
-      id={id}
-      initialPresence={{}}
-      initialStorage={{
-        columns: new LiveList(),
-        cards: new LiveList(),
-      }}>
-      <ClientSideSuspense fallback={(<div>loading...</div>)}>{() => (
-        <>
-          <div className='flex gap-2 justify-between items-center mb-4'>
-            <div>
-              Board: <br />
-              {!editNameMode && (
-                <h1 className='text-2xl'
-                  onClick={() => setEditNameMode(true)}>
-                  {name}
-                </h1>
-              )}
-              {editNameMode && (
-                <>
-                  <div className='flex items-center justify-between gap-2'>
-                    <form className='flex' onSubmit={handleNameSubmit} >
-                      <input type='text' defaultValue={name} />
-                      <button type="submit" className="ms-1 items-center rounded-md ">
-                        <FontAwesomeIcon icon={faFloppyDisk} />
-                      </button>
-                    </form>
-                    <CancelButton onClick={() => setEditNameMode(false)} />
-                  </div>
-                </>
-
-              )}
-            </div>
+    <BoardContextProvider>
+      {/* es un componente de liveblocks, que sirve para traer los datos de la db */}
+      <RoomProvider
+        id={id}
+        initialPresence={{}}
+        initialStorage={{
+          columns: new LiveList(),
+          cards: new LiveList(),
+        }}>
+        <ClientSideSuspense fallback={(<div>loading...</div>)}>{() => (
+          <>
             <Link
-              href={`/boards/${id}/settings`}
-              className='flex gap-2 items-center btn-settings'>
-              <FontAwesomeIcon icon={faCog} />
-              Board settings
+              href={`/`}
+              className='flex justify-start gap-2  items-center mb-2'>
+              <FontAwesomeIcon icon={faArrowLeft} />
+              Back to workspace
             </Link>
-          </div>
-          <Columns />
-        </>
-      )}
-      </ClientSideSuspense>
-    </RoomProvider>
+            <div className='flex gap-2 justify-between items-center mb-4'>
+              <div>
+                {!editNameMode && (
+                  <h1 className='text-2xl'
+                    onClick={() => setEditNameMode(true)}>
+                    {name}
+                  </h1>
+                )}
+                {editNameMode && (
+                  <>
+                    <div className='flex items-center justify-between gap-2'>
+                      <form className='flex' onSubmit={handleNameSubmit} >
+                        <input type='text' defaultValue={name} />
+                        <button type="submit" className="ms-1 items-center rounded-md ">
+                          <FontAwesomeIcon icon={faFloppyDisk} />
+                        </button>
+                      </form>
+                      <CancelButton onClick={() => setEditNameMode(false)} />
+                    </div>
+                  </>
 
+                )}
+              </div>
+              <Link
+                href={`/boards/${id}/settings`}
+                className='flex gap-2 items-center btn-settings'>
+                <FontAwesomeIcon icon={faCog} />
+                Board settings
+              </Link>
+            </div>
+            <Columns />
+          </>
+        )}
+        </ClientSideSuspense>
+      </RoomProvider>
+    </BoardContextProvider>
   )
 }

@@ -1,7 +1,7 @@
 'use server';
 import { liveblocksClient } from '@/lib/liveblocksClient'
 import { getUserEmail } from '@/lib/userClient'
-import Link from 'next/link';
+import BoardsTitles from './boardComponents/BoardsTitles';
 
 export default async function Boards() {
     // traemos el email logeado
@@ -36,12 +36,7 @@ export default async function Boards() {
     // ]
 
     return (
-        <div className='my-4 grid md:grid-cols-4 gap-2 text-center'>
-            {rooms?.length > 0 && rooms.map(room => (
-                <Link href={`/boards/${room.id}`} key={room.id} className='block bg-gray-300 p-4 rounded-md '>
-                    {room.metadata.boardName}
-                </Link>
-            ))}
-        </div>
+        // Le paso el array de rooms y la renombro como boards
+        <BoardsTitles boards={rooms}/>
     )
 }

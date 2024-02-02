@@ -33,7 +33,7 @@ export default async function BoardSettings({ params }: PageProps) {
     return (
         <div>
             <div className="flex justify-between items-center">
-            <Link href={`/boards/${boardId}`} className="inline-flex gap-1 items-center btn-settings mb-4">
+            <Link href={`/boards/${boardId}`} className="inline-flex gap-1 items-center ">
                 <FontAwesomeIcon icon={faArrowLeft} />
                 Go back to board
             </Link>
