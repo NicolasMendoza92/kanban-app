@@ -1,5 +1,4 @@
-import CardModal from '@/components/views/CardModal'
-import React from 'react'
+import CardModal from '@/components/views/CardModal';
 
 export default function CardModalPage() {
   return (

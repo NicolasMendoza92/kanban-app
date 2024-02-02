@@ -1,6 +1,6 @@
 'use server'
 
-import AllowedEmailsList from "@/components/AllowedEmailsList";
+import AllowedEmailsList from "@/components/boardComponents/AllowedEmailsList";
 import BoardDeleteButton from "@/components/boardComponents/BoardDeleteButton";
 import NewUserAccessForm from "@/components/forms/NewUserAccessForm";
 import { liveblocksClient } from "@/lib/liveblocksClient";

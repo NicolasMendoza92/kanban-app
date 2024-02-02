@@ -64,6 +64,7 @@ type ThreadMetadata = {
 export const {
   RoomProvider,
   useMyPresence,
+  useUpdateMyPresence,
   useStorage,
   useMutation,
   useRoom,

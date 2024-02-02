@@ -39,7 +39,7 @@ export default function CardDescription() {
 
 
   return (
-    <div>
+    <div className=''>
       {/* como este componente esta dentro de RoomProvider y dentro de ClientSideSuspense puedo invocarlo */}
       <CollaborativeEditor
         doc={doc}

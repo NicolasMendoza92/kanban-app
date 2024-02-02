@@ -7,7 +7,7 @@ import Columns from './Columns';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCog, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { updateBoard } from '@/app/actions/boardActions';
 import { useRouter } from 'next/navigation';
 import CancelButton from './buttons/CancelButton';
@@ -74,7 +74,7 @@ export default function Board({ id, name }: { id: string, name: string }) {
       {/* es un componente de liveblocks, que sirve para traer los datos de la db */}
       <RoomProvider
         id={id}
-        initialPresence={{}}
+        initialPresence={{ }}
         initialStorage={{
           columns: new LiveList(),
           cards: new LiveList(),
@@ -83,7 +83,7 @@ export default function Board({ id, name }: { id: string, name: string }) {
           <>
             <Link
               href={`/`}
-              className='flex justify-start gap-2  items-center mb-2'>
+              className='flex justify-start w-fit gap-2 items-center mb-2'>
               <FontAwesomeIcon icon={faArrowLeft} />
               Back to workspace
             </Link>

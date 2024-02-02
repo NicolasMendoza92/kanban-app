@@ -8,7 +8,9 @@ import { CollaborationCursor } from "@tiptap/extension-collaboration-cursor";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import { Underline } from "@tiptap/extension-underline";
 import { ToolbarCard } from './ToolbarCard';
+import styles from "./CollaborativeEditor.module.css";
 import { Avatars } from './Avatars';
+
 
 
 
@@ -26,6 +28,12 @@ export default function CollaborativeEditor({ doc, provider, cardId }: EditorPro
 
     // instalamos el framework Tiptap - https://tiptap.dev/docs/editor/introduction  con este podemos usar todas las propiedades, 
     const editor = useEditor({
+        editorProps: {
+            attributes: {
+              // Add styles to editor element
+              class: styles.editor,
+            },
+          },
         // definimos las extensiones en un array, que sacamos de la libreria de liveblocks 
         extensions: [
             StarterKit.configure({
@@ -53,8 +61,7 @@ export default function CollaborativeEditor({ doc, provider, cardId }: EditorPro
                 <ToolbarCard editor={editor} />
                 <Avatars />
             </div>
-
-            <EditorContent editor={editor} className='editorContainer' />
+            <EditorContent editor={editor} className={styles.editorContainer} />
         </div>
     )
 }

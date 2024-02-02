@@ -17,7 +17,7 @@ export default function NewBoardPage() {
   return (
     <div>
         <form action={handleNewBoardSubmit} className='max-w-md block'>
-            <h1 className='text-2xl'>Create it your way </h1>
+            <h1 className='text-2xl'>Create it your board </h1>
             <input type='text' name='name' placeholder='BOARD NAME'/>
             <button type='submit' className='mt-2 w-full'> Create </button>
         </form>

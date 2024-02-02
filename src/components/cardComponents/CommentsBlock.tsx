@@ -16,14 +16,14 @@ export default function CommentsBlock() {
     });
 
     return (
-        <div className="-mx-4">
+        <div className="-mx-4 z-30">
             {threads && threads.map(thread => (
                 <div key={thread.id}>
                     <Thread thread={thread} id={thread.id} />
                 </div>
             ))}
             {threads?.length === 0 && (
-                <div>
+                <div >
                     <Composer metadata={{ cardId: params.cardId.toString() }} />
                 </div>
             )}
