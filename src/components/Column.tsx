@@ -109,7 +109,7 @@ export default function Column({ id, name }: ColumnsProps) {
     }
 
     return (
-        <div className='w-48 h-auto bg-white shadow-md rounded-md p-2'>
+        <div className=' h-auto bg-white shadow-md rounded-md p-2 min-w-fit'>
             {!editNameMode && (
                 <div className="flex justify-between">
                     <h3>{name}</h3>
@@ -139,6 +139,9 @@ export default function Column({ id, name }: ColumnsProps) {
 
                 </div>
             )}
+             {!editNameMode && (
+                <NewCardForm columnId={id} />
+            )}
             {/* ponemos esta condicion para solucionar el problema de ts "Type 'CardType[] | null' is not assignable to type 'CardType[]'" */}
             {!editNameMode && columnCards && (
                 <ReactSortable
@@ -148,14 +151,13 @@ export default function Column({ id, name }: ColumnsProps) {
                     list={columnCards}
                     setList={items => setTasksOrderForColumn(items, id)}
                     group="cards">
+                        {/* invoco a card detail */}
                     {columnCards.map(card => (
                         <CardDetail key={card.id} id={card.id} name={card.name}/>
                     ))}
                 </ReactSortable>
             )}
-            {!editNameMode && (
-                <NewCardForm columnId={id} />
-            )}
+           
         </div>
     )
 }

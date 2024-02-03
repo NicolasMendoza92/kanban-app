@@ -16,7 +16,7 @@ export default function CardModalBody() {
     const params = useParams();
 
     // Traemos la vble de contexto setOpenCard para actualizarla en esta pagina
-    const { setOpenCard } = useContext<BoardContextProps>(BoardContext);
+    const { openCard, setOpenCard } = useContext<BoardContextProps>(BoardContext);
     const [editMode, setEditMode] = useState(false);
 
     // si esta abierto el id de la card tenemos que abirir el modal
@@ -28,6 +28,10 @@ export default function CardModalBody() {
 
     const handleCloseModal = () => {
         router.back();
+        // seteamos el Setopencard en null, cerramos el pop up
+        if (openCard && setOpenCard) {
+            setOpenCard(null);
+        }
     }
 
     // Traemos la info de la card seleccionada por medio del useStorage
@@ -107,7 +111,7 @@ export default function CardModalBody() {
                 </div>
             )}
             {!editMode && (
-                <div className="grid grid-cols-3 gap-4 z-20">
+                <div className="gap-4 z-20 md:grid grid-cols-3">
                     <div className="col-span-2 p-4">
                         <h2 className="flex gap-2 items-center mt-4">
                             <FontAwesomeIcon icon={faFileLines} />

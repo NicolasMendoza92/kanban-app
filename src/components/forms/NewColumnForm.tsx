@@ -29,7 +29,7 @@ export default function NewColumnForm() {
 
     return (
         <form onSubmit={handleNewColumn} >
-            <input type="text"className="newstate" placeholder=" +add state" />
+            <input type="text" className="newstate" placeholder=" +add state" />
         </form>
     )
 }

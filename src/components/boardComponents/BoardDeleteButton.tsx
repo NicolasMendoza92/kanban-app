@@ -8,6 +8,9 @@ export default function BoardDeleteButton({boardId}:{boardId:string}) {
     await deleteBoard(boardId);
     router.push('/');
   }
+
+  
+
   return (
     <div>
       <button

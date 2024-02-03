@@ -31,11 +31,11 @@ export default function Columns() {
 
     return (
         <div className='flex flex-wrap gap-4'>
-            <div className='relative overflow-x-auto'>
+            <div className='relative overflow-x-scroll md:overflow-x-hidden	'>
                 <ReactSortable
                     group={'board-column'}
                     list={columns}
-                    className='flex gap-4 '
+                    className='flex gap-8 '
                     ghostClass="opacity-40"
                     setList={setColumnsOrder}>
                     {columns.map(column => (

@@ -11,7 +11,7 @@ export default function NewCardForm({ columnId }: { columnId: string }) {
         storage.get('cards').push(new LiveObject<Card>({
             name: cardName,
             id: uniqid.time(),
-            index: 999,
+            index: 0,
             columnId: columnId,
         }))
     }, [])
@@ -26,9 +26,10 @@ export default function NewCardForm({ columnId }: { columnId: string }) {
         }
     }
 
+
     return (
         <form onSubmit={handleNewCardFormSubmit}>
-            <input type="text" placeholder=" add a task" />
+            <input type="text" className="addTask" placeholder="Add a task"  />
         </form>
     )
 }

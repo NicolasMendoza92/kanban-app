@@ -22,8 +22,9 @@ export default function NewUserAccessForm({ boardId }: { boardId: string }) {
     return (
         <form action={addEmail} className="max-w-xs">
             <h2 className="text-lg mb-2">Add users</h2>
+
             <input type="text" placeholder="tester@email.com" name="email" />
-            <button type="submit" className="w-full mt-2">Save</button>
+            <button type="submit" className="ms-2 mt-2">Add</button>
         </form>
     )
 }

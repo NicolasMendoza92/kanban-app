@@ -40,7 +40,7 @@ export default async function BoardSettings({ params }: PageProps) {
             <BoardDeleteButton boardId={boardId}/>
             </div>
             
-            <h1 className="text-2xl">Access to board: {boardInfo.metadata.boardName} </h1>
+            <h1 className="text-2xl">Allowed users to: {boardInfo.metadata.boardName} </h1>
             <div className="mb-8">
                 <AllowedEmailsList
                     boardId={boardId}

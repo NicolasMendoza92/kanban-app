@@ -1,9 +1,12 @@
 'use client'
 
+import { useParams } from "next/navigation";
 import CardModalBody from "../cardComponents/CardModalBody";
 
 
 export default function CardModal() {
+  const params = useParams();
+  const { cardId } = params
 
   return (
     <>

@@ -11,7 +11,7 @@ type PageProps = {
 }
 
 export default function BoardLayout({ children, modal }: PageProps) {
-  const params = useParams()
+  const params = useParams();
 
   return (
     <BoardContextProvider>

@@ -18,7 +18,7 @@ export default function DeleteCardBtn({onDelete}: Props) {
         <div className="grid grid-cols-2 gap-2">
           <div className="">
             <button
-              className="block grow w-full"
+              className="block grow w-full bg-gray-200 py-2 px-4 border border-t-blue-500 text-gray-500 rounded-md"
               onClick={() => setWannaDelete(false)}
             >
               <FontAwesomeIcon icon={faArrowLeft}/>
@@ -26,7 +26,7 @@ export default function DeleteCardBtn({onDelete}: Props) {
             </button>
           </div>
           <div>
-            <button onClick={onDelete} className="w-full red">
+            <button onClick={onDelete} className="w-full bg-gray-200 py-2 px-4 border border-t-red-500 text-red-500 rounded-md">
               Yes, delete!
             </button>
           </div>
