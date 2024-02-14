@@ -11,7 +11,7 @@ import { FormEvent, useState } from 'react';
 import { updateBoard } from '@/app/actions/boardActions';
 import { useRouter } from 'next/navigation';
 import CancelButton from './buttons/CancelButton';
-import { BoardContextProvider } from './boardComponents/BoardContext';
+import { BoardContextProvider } from '../context/BoardContext';
 
 
 // ANtes de usa liveblocks habia creado defults columns y cards para ver si funcionaba y tambien defini las clases TYPE

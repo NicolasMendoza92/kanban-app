@@ -1,17 +1,15 @@
-import { authOptions } from "@/lib/authOptions";
-import { getServerSession } from "next-auth";
+'use client'
 import Navbar from "./Navbar";
 import Link from "next/link";
 import LogoutButton from "./buttons/LogoutButton";
-import LoginNav from "./buttons/LoginNav";
+import { useSession } from "next-auth/react";
 
 
-
-export default async function Header() {
+export default function Header() {
 
     // me conecto a la base de datos y traigo el usuario autenticado
-    const session = await getServerSession(authOptions);
-    const logged = session?.user?.name || ''
+    const { status, data } = useSession();
+    const logged = data?.user?.name || ''
 
 
     return (
@@ -22,15 +20,10 @@ export default async function Header() {
                 </Link>
             </div>
             <ul className="hidden md:flex">
-                {session && (
+                {data && (
                     <li className="flex gap-3 text-blue-500">
-                        <b className="ms-1"> Hi! {session?.user?.name} </b>
+                        <b className="ms-1"> Hi!{logged} </b>
                         <LogoutButton />
-                    </li>
-                )}
-                {!session && (
-                    <li className="text-blue-500">
-                        <LoginNav />
                     </li>
                 )}
             </ul>

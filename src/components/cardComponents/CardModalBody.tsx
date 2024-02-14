@@ -1,6 +1,5 @@
 import { useParams, useRouter } from "next/navigation";
-import { FormEvent, useContext, useState } from "react";
-import { BoardContext, BoardContextProps } from "../boardComponents/BoardContext";
+import { FormEvent, useState } from "react";
 import { Card, useMutation, useStorage } from "@/app/liveblocks.config";
 import { shallow } from "@liveblocks/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,8 +14,6 @@ export default function CardModalBody() {
     const router = useRouter();
     const params = useParams();
 
-    // Traemos la vble de contexto setOpenCard para actualizarla en esta pagina
-    const { openCard, setOpenCard } = useContext<BoardContextProps>(BoardContext);
     const [editMode, setEditMode] = useState(false);
 
     // si esta abierto el id de la card tenemos que abirir el modal
@@ -28,10 +25,6 @@ export default function CardModalBody() {
 
     const handleCloseModal = () => {
         router.back();
-        // seteamos el Setopencard en null, cerramos el pop up
-        if (openCard && setOpenCard) {
-            setOpenCard(null);
-        }
     }
 
     // Traemos la info de la card seleccionada por medio del useStorage
@@ -62,10 +55,6 @@ export default function CardModalBody() {
     function handleDelete() {
         // invocamos a la funcion delete card y le pasamos el parametro de la cardId para borrar
         deleteCard(params.cardId);
-        // seteamos el Setopencard en null, cerramos el pop up
-        if (setOpenCard) {
-            setOpenCard(null);
-        }
         router.back();
     }
 

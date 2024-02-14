@@ -1,22 +1,16 @@
 'use client'
 
-import { useParams } from "next/navigation";
 import CardModalBody from "../cardComponents/CardModalBody";
 
-
 export default function CardModal() {
-  const params = useParams();
-  const { cardId } = params
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/70"></div>
-      <div className="absolute inset-0 w-full">
+      {/* <div className="fixed inset-0 bg-black/70"></div> */}
+      <div className=" inset-0 w-full ">
         <div className="">
-          <div className="bg-white max-w-7xl min-h-full my-8 px-8 py-4 mx-auto rounded-md">
-            <div onClick={ev => ev.stopPropagation()}>
-              <CardModalBody />
-            </div>
+          <div className="bg-white max-w-full min-h-full my-4 px-8 py-4 mx-auto rounded-md">
+            <CardModalBody />
           </div>
         </div>
       </div>
