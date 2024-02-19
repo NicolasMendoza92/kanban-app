@@ -1,5 +1,6 @@
 'use server'
 
+import Header from "@/components/Header";
 import AllowedEmailsList from "@/components/boardComponents/AllowedEmailsList";
 import BoardDeleteButton from "@/components/boardComponents/BoardDeleteButton";
 import NewUserAccessForm from "@/components/forms/NewUserAccessForm";
@@ -32,6 +33,8 @@ export default async function BoardSettings({ params }: PageProps) {
 
     return (
         <div>
+            <Header />
+            <div className="p-8">
             <div className="flex justify-between items-center">
             <Link href={`/boards/${boardId}`} className="inline-flex gap-1 items-center ">
                 <FontAwesomeIcon icon={faArrowLeft} />
@@ -47,6 +50,8 @@ export default async function BoardSettings({ params }: PageProps) {
                     usersAccesses={boardInfo.usersAccesses} />
             </div>
             <NewUserAccessForm boardId={boardId} />
+            </div>
+           
         </div>
     )
 }

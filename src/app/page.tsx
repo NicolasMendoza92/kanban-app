@@ -1,5 +1,6 @@
 
 import Boards from "@/components/Boards";
+import Header from "@/components/Header";
 import LoginView from "@/components/views/LoginView";
 import { authOptions } from "@/lib/authOptions";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -18,6 +19,8 @@ export default async function Home() {
 
   return (
     <div>
+      <Header />
+      <div className="p-8">
       <h1 className="text-4xl"> YOUR KANBAN WORKSPACE </h1>
       <Boards/>
       <div>
@@ -28,6 +31,8 @@ export default async function Home() {
         <FontAwesomeIcon className="ms-1" icon={faPlus} />
         </Link>
       </div>
+      </div>
+     
 
     </div>
   );

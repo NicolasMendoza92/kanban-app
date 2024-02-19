@@ -1,6 +1,7 @@
 'use server'
 
 import Board from "@/components/Board";
+import Header from "@/components/Header";
 import { liveblocksClient } from "@/lib/liveblocksClient";
 import { getUserEmail } from "@/lib/userClient";
 
@@ -30,9 +31,13 @@ export default async function BoardPage(props: PageProps) {
   }
   return (
     <div>
+      <Header />
+      <div className="p-8">
       <Board
         name={boardInfo.metadata.boardName.toString()}
         id={boardId} />
+      </div>
+      
     </div>
   );
 }
